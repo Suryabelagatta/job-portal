@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h3>Your Posted Jobs</h3>
+  <div class="card mb-3" *ngFor="let job of jobs" (click)="viewApplicants(job.id)" style="cursor: pointer;">
+    <div class="card-body">
+      <h5 class="card-title">{{ job.title }} at {{ job.company }}</h5>
+      <p class="card-text">{{ job.description }}</p>
+      <p><strong>Location:</strong> {{ job.location || 'N/A' }} |
+         <strong>Category:</strong> {{ job.category || 'N/A' }}</p>
+      <p><strong>Experience:</strong> {{ job.experienceRequired || 'N/A' }} |
+         <strong>Salary:</strong> ₹{{ job.salary || 'N/A' }}</p>
+      <small>Posted on: {{ job.postedDate | date:'medium' }}</small>
+    </div>
+  </div>
+</div>

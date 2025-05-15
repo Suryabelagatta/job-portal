@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>My Posted Jobs</h2>
+
+  <div *ngFor="let job of jobs" class="card mb-3">
+    <div class="card-body">
+      <h5>{{ job.title }}</h5>
+      <p>{{ job.company }} – {{ job.location }}</p>
+      <a [routerLink]="['/edit-job', job.id]" class="btn btn-sm btn-outline-primary">Edit</a>
+      <button class="btn btn-sm btn-danger ms-2" (click)="delete(job.id)">Delete</button>
+    </div>
+  </div>
+</div>

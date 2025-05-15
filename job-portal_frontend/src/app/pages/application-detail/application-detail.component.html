@@ -1,0 +1,20 @@
+<h2>Application Details</h2>
+<div *ngIf="application">
+  <p><strong>Applicant Name:</strong> {{ application.applicant.fullName }}</p>
+  <p><strong>Email:</strong> {{ application.applicant.email }}</p>
+  <p><strong>Resume:</strong> <a
+  [href]="resumeService.downloadResume(application.resumeId)"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="btn btn-sm btn-primary"
+>
+  View Resume
+</a></p>
+  <p><strong>Cover Letter:</strong> {{ application.coverLetter || 'N/A' }}</p>
+  <p><strong>Status:</strong>
+<select [value]="application.status" (change)="onStatusChange($event)">
+  <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+</select>
+  </p>
+  <p><strong>Applied Date:</strong> {{ application.appliedDate | date: 'medium' }}</p>
+</div>

@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h2>Job Listings</h2>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <!-- Filters -->
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <input type="text" [(ngModel)]="title" (input)="filterJobs()" placeholder="Filter by title" class="form-control" />
+    </div>
+    <div class="col-md-3">
+      <input type="text" [(ngModel)]="location" (input)="filterJobs()" placeholder="Filter by location" class="form-control" />
+    </div>
+    <div class="col-md-3">
+      <input type="text" [(ngModel)]="category" (input)="filterJobs()" placeholder="Filter by category" class="form-control" />
+    </div>
+    <div class="col-md-3">
+      <input type="text" [(ngModel)]="company" (input)="filterJobs()" placeholder="Filter by company" class="form-control" />
+    </div>
+  </div>
+
+  <div *ngIf="filteredJobs.length === 0">No matching jobs found.</div>
+
+  <div class="card mb-3" *ngFor="let job of filteredJobs">
+    <div class="card-body">
+      <h5 class="card-title">{{ job.title }} at {{ job.company }}</h5>
+      <p class="card-text">{{ job.description }}</p>
+      <p><strong>Location:</strong> {{ job.location }} | <strong>Category:</strong> {{ job.category }}</p>
+      <p><strong>Experience:</strong> {{ job.experienceRequired }} | <strong>Salary:</strong> ₹{{ job.salary }}</p>
+      <small>Posted on: {{ job.postedDate | date:'medium' }}</small>
+      <br /><br />
+
+      <div *ngIf="isApplied(job.id)">
+        <span class="badge bg-success">Already Applied</span>
+      </div>
+    <div *ngIf="!isApplied(job.id)">
+    <button class="btn btn-primary" (click)="applyToJob(job.id)">Apply</button>
+    </div>
+    </div>
+  </div>
+</div>

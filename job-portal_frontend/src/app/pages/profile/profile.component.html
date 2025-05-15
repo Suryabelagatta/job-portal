@@ -1,0 +1,52 @@
+<div class="container mt-4" style="max-width: 700px;">
+  <h2>My Profile</h2>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="message" class="alert alert-success">{{ message }}</div>
+
+  <form *ngIf="user" (ngSubmit)="saveProfile()">
+    <div class="mb-3">
+      <label>Email</label>
+      <input class="form-control" [value]="user.email" disabled />
+    </div>
+
+    <div class="mb-3">
+      <label>Full Name</label>
+      <input class="form-control" [(ngModel)]="user.fullName" name="fullName" [disabled]="!editMode" />
+    </div>
+
+    <div class="mb-3">
+      <label>Phone</label>
+      <input class="form-control" [(ngModel)]="user.phone" name="phone" [disabled]="!editMode" />
+    </div>
+
+    <div class="mb-3">
+      <label>Location</label>
+      <input class="form-control" [(ngModel)]="user.location" name="location" [disabled]="!editMode" />
+    </div>
+
+    <div class="mb-3">
+      <label>Skills</label>
+      <input class="form-control" [(ngModel)]="user.skills" name="skills" [disabled]="!editMode" />
+    </div>
+
+    <div class="mb-3">
+      <label>Bio</label>
+      <textarea class="form-control" [(ngModel)]="user.bio" name="bio" rows="3" [disabled]="!editMode"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label>Role</label>
+      <input class="form-control" [value]="user.role" disabled />
+    </div>
+
+    <div *ngIf="editMode">
+      <button type="submit" class="btn btn-success">Save Changes</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="editMode = false">Cancel</button>
+    </div>
+
+    <div *ngIf="!editMode">
+      <button type="button" class="btn btn-primary" (click)="enableEdit()">Edit Profile</button>
+    </div>
+  </form>
+</div>

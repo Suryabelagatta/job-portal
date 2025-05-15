@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>{{ jobId ? 'Edit' : 'Create' }} Job</h2>
+  <form (ngSubmit)="submit()">
+    <input class="form-control mb-2" [(ngModel)]="job.title" name="title" placeholder="Title" required />
+    <textarea class="form-control mb-2" [(ngModel)]="job.description" name="description" placeholder="Description"></textarea>
+    <input class="form-control mb-2" [(ngModel)]="job.company" name="company" placeholder="Company" required />
+    <input class="form-control mb-2" [(ngModel)]="job.location" name="location" placeholder="Location" />
+    <input class="form-control mb-2" [(ngModel)]="job.category" name="category" placeholder="Category" />
+    <input class="form-control mb-2" [(ngModel)]="job.experienceRequired" name="experienceRequired" placeholder="Experience" />
+    <input class="form-control mb-2" [(ngModel)]="job.salary" name="salary" placeholder="Salary" />
+    <button type="submit" class="btn btn-success">{{ jobId ? 'Update' : 'Create' }}</button>
+  </form>
+</div>

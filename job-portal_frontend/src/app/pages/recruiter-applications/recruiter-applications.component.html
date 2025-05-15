@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h3>Applications for Job ID: {{ jobId }}</h3>
+  <div *ngIf="applications.length === 0">
+    <p>No applications found.</p>
+  </div>
+  <div class="card mb-3" *ngFor="let app of applications">
+    <div class="card-body">
+      <h5 class="card-title">{{ app.applicant.fullName }} ({{ app.applicant.email }})</h5>
+        <p>
+<button (click)="viewResume(app.resumeId)">View Resume</button></p>
+      <p>Status:
+        <select [value]="app.status" (change)="updateStatus(app.id, $event)">
+          <option value="PENDING">PENDING</option>
+          <option value="SHORTLISTED">SHORTLISTED</option>
+          <option value="REJECTED">REJECTED</option>
+        </select>
+      </p>
+      <small>Applied on: {{ app.appliedDate | date:'medium' }}</small>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Job Search</h2>
+
+  <div class="mb-3">
+    <input type="text" [(ngModel)]="keyword" placeholder="Search by keyword" class="form-control" />
+    <button class="btn btn-primary mt-2" (click)="search()">Search</button>
+  </div>
+
+  <div class="row g-2 mb-3">
+    <div class="col"><input class="form-control" placeholder="Category" [(ngModel)]="filters.category" /></div>
+    <div class="col"><input class="form-control" placeholder="Location" [(ngModel)]="filters.location" /></div>
+    <div class="col"><input class="form-control" placeholder="Experience" [(ngModel)]="filters.experience" /></div>
+    <div class="col"><button class="btn btn-secondary" (click)="filter()">Apply Filters</button></div>
+  </div>
+
+  <div *ngFor="let job of jobs" class="card mb-3">
+    <div class="card-body">
+      <h5>{{ job.title }}</h5>
+      <p>{{ job.company }} — {{ job.location }}</p>
+      <p><strong>Experience:</strong> {{ job.experienceRequired }}</p>
+      <a [routerLink]="['/jobs', job.id]" class="btn btn-sm btn-outline-primary">View Details</a>
+    </div>
+  </div>
+</div>

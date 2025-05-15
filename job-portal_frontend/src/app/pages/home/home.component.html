@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h2>Welcome!</h2>
+  <div *ngIf="role === 'JOB_SEEKER'">
+    <h4>This is the Job Seeker's Dashboard</h4>
+    <p>Search and apply for jobs here.</p>
+  </div>
+  <div *ngIf="role === 'RECRUITER'">
+    <h4>This is the Recruiter's Dashboard</h4>
+    <p>Post and manage job listings here.</p>
+  </div>
+  <div *ngIf="!role">
+    <p>Please login to view your dashboard.</p>
+  </div>
+</div>

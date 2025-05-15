@@ -1,0 +1,61 @@
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">Job Portal</a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav me-auto">
+          <!-- Common navigation for all users -->
+          <!-- Job Seeker navigation -->
+          <ng-container *ngIf="isJobSeeker()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/jobs" routerLinkActive="active">Job Listings</a>
+          </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/applications/my" routerLinkActive="active">My Applications</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/profile" routerLinkActive="active">My Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/logout" role="button">Logout</a>
+            </li>
+          </ng-container>
+          
+          <!-- Recruiter navigation -->
+          <ng-container *ngIf="isRecruiter()">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/create-job" routerLinkActive="active">Post a Job</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/recruiter" routerLinkActive="active">Manage Jobs</a>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/recruiter/dashboard" routerLinkActive="active">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/logout" role="button">Logout</a>
+            </li>
+          </ng-container>
+        </ul>
+        
+        <!-- User actions -->
+        <ul class="navbar-nav">
+          <!-- Not logged in -->
+          <ng-container *ngIf="!currentUser">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
